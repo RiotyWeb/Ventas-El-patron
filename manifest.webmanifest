@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "El Patrón · Ventas",
+  "short_name": "El Patrón",
+  "description": "Registro local de ventas, gastos y resumen diario.",
+  "lang": "es-MX",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#C0282A",
+  "theme_color": "#9E1C1F",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
