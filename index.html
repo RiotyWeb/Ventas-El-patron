@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>El Patrón · Ventas</title>
 <link rel="icon" type="image/svg+xml" href="./icon.svg?v=2">
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#9E1C1F">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titan+One&family=Nunito:wght@600;800&display=swap">
 <style>
 :root{--red:#C0282A;--red2:#9E1C1F;--ink:#2B1210;--cream:#FFF4E3;--pink:#F6AAB4;--gold:#F0B13B;--green:#5E8C32;--card:#FFF4E3;--muted:#7A4A44;
@@ -170,7 +172,17 @@ function exportarPDF(){
   <h2>Gastos registrados (${gastos.length})</h2>
   <table><thead><tr><th>Concepto</th><th>Responsable</th><th class="money">Monto</th></tr></thead><tbody>${filasGastos}</tbody></table>
   <p class="note">Reporte generado desde el registro local de El Patrón. Conserva este documento como respaldo del día.</p>
-  </body></html>`);
+  
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(error => {
+      console.error("No se pudo registrar el service worker:", error);
+    });
+  });
+}
+</script>
+</body></html>`);
   w.document.close();
   setTimeout(()=>w.print(),350);
 }
