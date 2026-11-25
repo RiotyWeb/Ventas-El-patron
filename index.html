@@ -173,15 +173,6 @@ function exportarPDF(){
   <table><thead><tr><th>Concepto</th><th>Responsable</th><th class="money">Monto</th></tr></thead><tbody>${filasGastos}</tbody></table>
   <p class="note">Reporte generado desde el registro local de El Patrón. Conserva este documento como respaldo del día.</p>
   
-<script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js").catch(error => {
-      console.error("No se pudo registrar el service worker:", error);
-    });
-  });
-}
-</script>
 </body></html>`);
   w.document.close();
   setTimeout(()=>w.print(),350);
@@ -233,6 +224,15 @@ document.addEventListener('change',e=>{
 });
 $('#resp').addEventListener('input',e=>{S.resp=e.target.value;save()});
 render();
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(error => {
+      console.error("No se pudo registrar el service worker:", error);
+    });
+  });
+}
 </script>
 </body>
 </html>
