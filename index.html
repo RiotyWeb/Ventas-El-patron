@@ -57,6 +57,15 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-o
 .p-ajustes{justify-content:center;height:104px}.p-ajustes .pig{width:210px;transform-origin:50% 0}
 .card,.btn,.stat,.warn{position:relative;z-index:1}
 </style>
+
+<meta name="theme-color" content="#9E1C1F">
+<meta name="description" content="Registro local de ventas, gastos y resumen diario de El Patrón.">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="./icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="El Patrón">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
 </head>
 <body>
 <header><div id="logo"></div><div class="brand" id="brandtxt">El Patrón</div><input class="resp" id="resp" placeholder="Responsable" aria-label="Responsable del turno"></header>
@@ -169,7 +178,18 @@ function exportarPDF(){
   <h2>Gastos registrados (${gastos.length})</h2>
   <table><thead><tr><th>Concepto</th><th>Responsable</th><th class="money">Monto</th></tr></thead><tbody>${filasGastos}</tbody></table>
   <p class="note">Reporte generado desde el registro local de El Patrón. Conserva este documento como respaldo del día.</p>
-  </body></html>`);
+  
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(err => {
+      console.error("No se pudo registrar el modo sin conexión:", err);
+    });
+  });
+}
+</script>
+
+</body></html>`);
   w.document.close();
   setTimeout(()=>w.print(),350);
 }
